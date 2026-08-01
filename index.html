@@ -1383,9 +1383,15 @@ Jl. TB Simatupang Jakarta Selatan</p>				</div>
                 song.volume = 0;
                 if (isFirstPlay) {
                     var rawStart = "";
-                    var range = parseTimeRange(rawStart);
-                    loopStartTime = range.start;
-                    loopEndTime = range.end;
+                     if (rawStart === "") {
+        loopStartTime = 2; 
+        loopEndTime = song.duration; // Loop sampai akhir lagu asli
+    } else {
+        var range = parseTimeRange(rawStart);
+        loopStartTime = range.start;
+        loopEndTime = range.end;
+    }
+           
                     song.currentTime = loopStartTime;
                     isFirstPlay = false;
                 }
